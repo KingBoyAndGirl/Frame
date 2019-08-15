@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.king.dao.IUserDao">
+    <!-- 配置 查询结果的列名和实体类的属性名的对应关系 -->
+    <resultMap id="userMap" type="com.king.domain.User">
+        <!-- 主键字段的对应 -->
+        <id property="id" column="id"></id>
+        <!--非主键字段的对应-->
+        <result property="username" column="username"></result>
+        <result property="address" column="address"></result>
+        <result property="sex" column="sex"></result>
+        <result property="birthday" column="birthday"></result>
+    </resultMap>
+
+    <!-- 了解的内容：抽取重复的sql语句-->
+    <sql id="defaultUser">
+        select * from user
+    </sql>
+
+    <!--配置查询所有-->
+    <select id="findAll" resultType="com.king.domain.User">
+        <include refid="defaultUser"></include>
+    </select>
+
+    <!--保存用户-->
+    <insert id="saveUser" parameterType="com.king.domain.User">
+        <!-- 配置保存时获取插入的 id -->
+        <selectKey keyColumn="id" keyProperty="id" resultType="int" order="AFTER">
+            select last_insert_id();
+        </selectKey>
+        insert into user(username, birthday, sex, address) values (#{username},#{birthday},#{sex},#{address});
+    </insert>
+
+    <!--更新用户-->
+    <update id="updateUser" parameterType="com.king.domain.User">
+        update user
+        set username=#{username},
+            address=#{address},
+            sex=#{sex},
+            birthday=#{birthday}
+        where id = #{id}
+    </update>
+
+    <!--删除用户-->
+    <delete id="deleteUser" parameterType="int">
+        delete
+        from user
+        where id = #{uid}
+    </delete>
+
+    <!--根据id查询用户-->
+    <select id="findById" parameterType="java.lang.Integer" resultType="com.king.domain.User">
+        <include refid="defaultUser"></include>
+        where id = #{uid}
+    </select>
+
+    <!--根据名称模糊查询用户信息-->
+    <select id="findByName" parameterType="string" resultType="com.king.domain.User">
+        <!--select * from user where username like #{name}-->
+        <include refid="defaultUser"></include> where username like'%${value}'
+    </select>
+
+    <!--查询总记录数-->
+    <select id="findTotal" resultType="int">
+        select count(*)
+        from user
+    </select>
+
+    <!--根据QueryVo查询中的条件查询用户-->
+    <select id="findUserByVo" parameterType="com.king.domain.QueryVo" resultType="com.king.domain.User">
+        <include refid="defaultUser"></include>
+        where username like #{user.username}
+    </select>
+
+    <!--&lt;!&ndash;根据传入参数条件查询&ndash;&gt;
+    <select id="findUserByCondition" resultType="com.king.domain.User" parameterType="com.king.domain.User">
+        select * from user where 1=1
+        <if test="username!=null and username != '' ">
+            and username like #{username}
+        </if>
+        <if test="address != null">
+        and address like #{address}
+        </if>
+    </select>-->
+    <select id="findUserByCondition" resultType="com.king.domain.User" parameterType="com.king.domain.User">
+        <include refid="defaultUser"></include>
+        <where>
+            <if test="username!=null and username != '' ">
+                and username like #{username}
+            </if>
+            <if test="address != null">
+                and address like #{address}
+            </if>
+        </where>
+    </select>
+
+    <!--根据QueryVo提供的id集合，查询用户信息-->
+    <select id="findUserInIds" resultMap="userMap" parameterType="com.king.domain.QueryVo">
+        <include refid="defaultUser"></include>
+        <where>
+            <if test="ids !=null and ids.size() > 0">
+                <foreach collection="ids" open="and id in(" close=")" item="uid" separator=",">
+                    #{uid}
+                </foreach>
+            </if>
+        </where>
+    </select>
+</mapper>
