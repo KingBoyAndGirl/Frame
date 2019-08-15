@@ -1,6 +1,7 @@
 package com.king;
 
 import com.king.dao.IUserDao;
+import com.king.domain.Account;
 import com.king.domain.QueryVo;
 import com.king.domain.User;
 import org.apache.ibatis.io.Resources;
