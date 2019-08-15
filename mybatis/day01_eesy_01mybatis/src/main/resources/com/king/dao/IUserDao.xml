@@ -18,6 +18,11 @@
             <result column="uid" property="uid"></result>
             <result column="money" property="money"></result>
         </collection>
+        <collection property="roles" ofType="role">
+            <id property="roleId" column="rid"></id>
+            <result property="roleName" column="role_name"></result>
+            <result property="roleDesc" column="role_desc"></result>
+        </collection>
     </resultMap>
 
     <!-- 了解的内容：抽取重复的sql语句-->
@@ -27,7 +32,7 @@
 
     <!--配置查询所有-->
     <select id="findAll" resultMap="userMap">
-        select * from user u left outer join account a on u.id = a.UID
+        select u.*,r.id as rid,r.role_name,r.role_desc from user u left outer join user_role ur on u.id = ur.uid left outer join role r on r.id =ur.rid
     </select>
 
     <!--保存用户-->

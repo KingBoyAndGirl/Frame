@@ -1,9 +1,8 @@
 package com.king;
 
-import com.king.dao.IAccountDao;
+import com.king.dao.IRoleDao;
 import com.king.dao.IUserDao;
-import com.king.domain.Account;
-import com.king.domain.AccountUser;
+import com.king.domain.Role;
 import com.king.domain.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -26,11 +25,11 @@ import java.util.List;
  * @Date: 2019/8/12 22:14
  * @Version: 1.0
  */
-public class UserTest {
+public class RoleTest {
 
     private InputStream in;
     private SqlSession sqlSession;
-    private IUserDao userDao;
+    private IRoleDao roleDao;
 
     @Before //用于在测试方法之前执行
     public void init() throws IOException {
@@ -45,7 +44,7 @@ public class UserTest {
         sqlSession = factory.openSession();
 
         //4.使用SqlSession创建Dao接口的代理对象
-        userDao = sqlSession.getMapper(IUserDao.class);
+        roleDao = sqlSession.getMapper(IRoleDao.class);
     }
 
     @After //用于在测试方法之后执行
@@ -64,11 +63,10 @@ public class UserTest {
     @Test
     public  void testFindAll() throws IOException {
 
-        List<User> users = userDao.findAll();
-        for (User user : users) {
-            System.out.println("----------------------------------------");
-            System.out.println(user);
-            System.out.println(user.getRoles());
+        List<Role> roles = roleDao.findAll();
+        for (Role role : roles) {
+            System.out.println(role);
+            System.out.println(role.getUsers());
         }
     }
 
