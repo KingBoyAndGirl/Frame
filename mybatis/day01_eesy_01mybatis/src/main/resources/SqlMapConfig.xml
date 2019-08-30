@@ -28,6 +28,7 @@
         </environment>
     </environments>
     <!-- 配置映射文件的位置 -->
+    <!--指定带有注解的dao接口所在位置-->
     <mappers>
         <package name="com.king.dao"></package>
     </mappers>
