@@ -1,2 +1,21 @@
 2019-08-30 12:52:57,230 0      [           main] INFO  ClassPathXmlApplicationContext  - Refreshing org.springframework.context.support.ClassPathXmlApplicationContext@76b0bfab: startup date [Fri Aug 30 12:52:57 CST 2019]; root of context hierarchy
 2019-08-30 12:52:57,298 68     [           main] INFO  ry.xml.XmlBeanDefinitionReader  - Loading XML bean definitions from class path resource [applicationContext.xml]
+2019-09-04 08:14:01,447 0      [ost-startStop-1] INFO  work.web.context.ContextLoader  - Root WebApplicationContext: initialization started
+2019-09-04 08:14:01,537 90     [ost-startStop-1] INFO  pport.XmlWebApplicationContext  - Refreshing Root WebApplicationContext: startup date [Wed Sep 04 08:14:01 CST 2019]; root of context hierarchy
+2019-09-04 08:14:01,587 140    [ost-startStop-1] INFO  ry.xml.XmlBeanDefinitionReader  - Loading XML bean definitions from class path resource [applicationContext.xml]
+2019-09-04 08:14:02,207 760    [ost-startStop-1] INFO  redAnnotationBeanPostProcessor  - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-09-04 08:14:02,407 960    [ost-startStop-1] INFO         com.mchange.v2.log.MLog  - MLog clients using log4j logging.
+2019-09-04 08:14:02,447 1000   [ost-startStop-1] INFO  m.mchange.v2.c3p0.C3P0Registry  - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+2019-09-04 08:14:03,038 1591   [ost-startStop-1] INFO  work.web.context.ContextLoader  - Root WebApplicationContext: initialization completed in 1581 ms
+2019-09-04 08:14:04,218 2771   [ost-startStop-1] INFO  .web.servlet.DispatcherServlet  - FrameworkServlet 'dispatcherServlet': initialization started
+2019-09-04 08:14:04,218 2771   [ost-startStop-1] INFO  pport.XmlWebApplicationContext  - Refreshing WebApplicationContext for namespace 'dispatcherServlet-servlet': startup date [Wed Sep 04 08:14:04 CST 2019]; parent: Root WebApplicationContext
+2019-09-04 08:14:04,218 2771   [ost-startStop-1] INFO  ry.xml.XmlBeanDefinitionReader  - Loading XML bean definitions from class path resource [springmvc.xml]
+2019-09-04 08:14:04,368 2921   [ost-startStop-1] INFO  redAnnotationBeanPostProcessor  - JSR-330 'javax.inject.Inject' annotation found and supported for autowiring
+2019-09-04 08:14:04,608 3161   [ost-startStop-1] INFO  andler.SimpleUrlHandlerMapping  - Mapped URL path [/css/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+2019-09-04 08:14:04,628 3181   [ost-startStop-1] INFO  andler.SimpleUrlHandlerMapping  - Mapped URL path [/images/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1'
+2019-09-04 08:14:04,628 3181   [ost-startStop-1] INFO  andler.SimpleUrlHandlerMapping  - Mapped URL path [/js/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#2'
+2019-09-04 08:14:04,668 3221   [ost-startStop-1] INFO  n.RequestMappingHandlerMapping  - Mapped "{[/account/save]}" onto public java.lang.String com.king.controller.AccountController.save(com.king.domain.Account,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse) throws java.io.IOException
+2019-09-04 08:14:04,678 3231   [ost-startStop-1] INFO  n.RequestMappingHandlerMapping  - Mapped "{[/account/findAll]}" onto public java.lang.String com.king.controller.AccountController.findAll(org.springframework.ui.Model)
+2019-09-04 08:14:04,798 3351   [ost-startStop-1] INFO  n.RequestMappingHandlerAdapter  - Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcherServlet-servlet': startup date [Wed Sep 04 08:14:04 CST 2019]; parent: Root WebApplicationContext
+2019-09-04 08:14:04,868 3421   [ost-startStop-1] INFO  n.RequestMappingHandlerAdapter  - Looking for @ControllerAdvice: WebApplicationContext for namespace 'dispatcherServlet-servlet': startup date [Wed Sep 04 08:14:04 CST 2019]; parent: Root WebApplicationContext
+2019-09-04 08:14:04,968 3521   [ost-startStop-1] INFO  .web.servlet.DispatcherServlet  - FrameworkServlet 'dispatcherServlet': initialization completed in 750 ms

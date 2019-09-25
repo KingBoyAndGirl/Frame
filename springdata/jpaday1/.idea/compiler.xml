@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="jpaday03_one_many" />
+        <module name="jpaday03_manytomany" />
+        <module name="jpaday3_spec" />
+        <module name="jpaday2" />
+        <module name="jpaday1" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>
