@@ -7,10 +7,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="jpaday03_one_many" />
+        <module name="jpaday1" />
+        <module name="jpaday2" />
         <module name="jpaday03_manytomany" />
         <module name="jpaday3_spec" />
-        <module name="jpaday2" />
-        <module name="jpaday1" />
       </profile>
     </annotationProcessing>
   </component>

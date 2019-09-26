@@ -5,10 +5,7 @@ import com.king.domain.Customer;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.*;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -161,7 +158,7 @@ public class SpecTest {
          *          第二个参数：每页的查询的数量
          */
         Pageable pageable=new PageRequest(0,2);
-        Page<Customer> page = customerDao.findAll(null,pageable);
+        Page<Customer> page = customerDao.findAll((Example<Customer>) null,pageable);
         System.out.println(page.getContent());  //得到数据集合列表
         System.out.println(page.getTotalElements());        //得到总条数
         System.out.println(page.getTotalPages());       //得到总页数
