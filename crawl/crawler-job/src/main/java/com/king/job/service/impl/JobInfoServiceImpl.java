@@ -5,6 +5,8 @@ import com.king.job.domain.JobInfo;
 import com.king.job.service.JobInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,7 +32,7 @@ public class JobInfoServiceImpl implements JobInfoService {
     public void save(JobInfo jobInfo) {
         //根据url和发布时间查询数据
         JobInfo param=new JobInfo();
-        param.setUrl(jobInfo.getUrl());
+        param.setJobUrl(jobInfo.getJobUrl());
         param.setTime(jobInfo.getTime());
 
         //执行查询
@@ -51,5 +53,11 @@ public class JobInfoServiceImpl implements JobInfoService {
 
         //执行查询
         return jobInfoDao.findAll(example);
+    }
+
+    @Override
+    public Page<JobInfo> findJobInfoByPage(int page, int rows) {
+
+        return jobInfoDao.findAll(PageRequest.of(page-1,rows));
     }
 }

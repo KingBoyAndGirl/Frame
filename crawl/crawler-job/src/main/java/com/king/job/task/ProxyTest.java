@@ -22,7 +22,7 @@ import us.codecraft.webmagic.proxy.SimpleProxyProvider;
 @Component
 public class ProxyTest implements PageProcessor {
 
-    @Scheduled(fixedDelay = 10000)
+    //@Scheduled(fixedDelay = 10000)
     public void testProxy() {
         //创建下载器Downloader
         HttpClientDownloader httpClientDownloader = new HttpClientDownloader();

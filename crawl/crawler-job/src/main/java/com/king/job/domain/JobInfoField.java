@@ -1,35 +1,44 @@
 package com.king.job.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
 
 /**
- * @ProjectName: crawlerfirst
- * @Package: com.king.job.dao
- * @ClassName: JobInfo
+ * @ProjectName: crawler-job
+ * @Package: com.king.job.domain
+ * @ClassName: JobInfoField
  * @Author: 王团结
  * @Description:
- * @Date: 2019/10/5 16:22
+ * @Date: 2019/10/6 13:40
  * @Version: 1.0
  */
-@Entity
-public class JobInfo {
+@Document(indexName = "jobinfo", type = "jobInfoField")
+public class JobInfoField {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Field(index = true, store = true, type = FieldType.Long)
     private Long id;
+    @Field(index = false, store = true, type = FieldType.Text)
     private String companyName;
+    @Field(index = false, store = true, type = FieldType.Text)
     private String companyAddr;
+    @Field(index = false, store = true, type = FieldType.Text)
     private String companyInfo;
+    @Field(index = true, store = true, analyzer = "ik_smart", searchAnalyzer = "ik_smart", type = FieldType.Text)
     private String companyUrl;
     private String jobName;
+    @Field(index = true, store = true, analyzer = "ik_smart", searchAnalyzer = "ik_smart", type = FieldType.Text)
     private String jobAddr;
+    @Field(index = true, store = false, analyzer = "ik_smart", searchAnalyzer = "ik_smart", type = FieldType.Text)
     private String jobInfo;
     private String jobUrl;
+    @Field(index = true, store = true, type = FieldType.Integer)
     private Integer salaryMin;
+    @Field(index = true, store = true, type = FieldType.Integer)
     private Integer salaryMax;
+    @Field(index = true, store = true, type = FieldType.Text)
     private String time;
 
     public Long getId() {
@@ -130,7 +139,7 @@ public class JobInfo {
 
     @Override
     public String toString() {
-        return "JobInfo{" +
+        return "JobInfoField{" +
                 "id=" + id +
                 ", companyName='" + companyName + '\'' +
                 ", companyAddr='" + companyAddr + '\'' +
