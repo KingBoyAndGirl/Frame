@@ -105,7 +105,7 @@ public class SearchIndex {
             System.out.println("**************************************高亮结果");
             Map<String, HighlightField> highlightFields = searchHit.getHighlightFields();
             System.out.println(highlightFields);
-            //去title高亮显示的结果
+            //取title高亮显示的结果
             HighlightField field = highlightFields.get(highlightField);
             Text[] fragments = field.getFragments();
             if (fragments!=null){
